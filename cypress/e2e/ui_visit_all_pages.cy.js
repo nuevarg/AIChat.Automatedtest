@@ -1,6 +1,8 @@
+const { contains } = require("cypress/types/jquery");
+
 context('Visit all pages', () => {
   beforeEach(function () {
-    cy.visit('https://aichat.com/')
+    cy.visit('/')
       .get('.obra-header')
       .within(() => {
         cy.get('.obra-brand')
@@ -130,5 +132,10 @@ context('Visit all pages', () => {
         'be.visible'
       )
     });
+    cy.get('#features').within(() => {
+      cy.contains('Beyond A Chatbot Development Tool').should('be.visible')
+      .contains('OUR PRODUCT').should('be.visble')
+      .contains('AiChat offers a suite of A.I-powered software for marketing, sales and customer service across multiple chat channels.').should('be.visible')
+    })
   });
 });
