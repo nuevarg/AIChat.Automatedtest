@@ -1,4 +1,4 @@
-context('empty spec', () => {
+context('Visit all pages', () => {
   beforeEach(function () {
     cy.visit('https://aichat.com/')
       .get('.obra-header')
