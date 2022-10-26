@@ -23,3 +23,18 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+import 'cypress-iframe';
+import "cypress-real-events/support";
+
+Cypress.Commands.add('openHomepage', () => {
+  cy.visit('/');
+});
+
+Cypress.Commands.add('selectWidgetChat', (iframe) => {
+  return cy
+    .get('iframe')
+    .its('0.contentDocument.body')
+    .should('be.visible')
+    .then(cy.wrap);
+});

@@ -1,6 +1,6 @@
 context('Visit all pages', () => {
   beforeEach(function () {
-    cy.visit('/')
+    cy.openHomepage()
       .get('.obra-header')
       .within(() => {
         cy.get('.obra-brand')
@@ -147,7 +147,7 @@ context('Visit all pages', () => {
     });
   });
 
-  it('Validate homepage is loaded properly', () => {
+  it('Validate Homepage is loaded properly', () => {
     cy.get('#rev_slider_7_1_wrapper').within(() => {
       cy.get('.tp-caption')
         .contains('AI-Powered Conversational')
@@ -765,4 +765,9 @@ context('Visit all pages', () => {
         );
     });
   });
+
+  it.only('Validate Service Suite page is loaded properly', function () {
+    cy.get('.nav-label').contains('Products').trigger('mousehover')
+    .get('.nav-label').contains('Service Suite').click({force:true})
+  })
 });

@@ -1,5 +1,14 @@
 {
+  "scripts": {
+    "test": "cypress open",
+    "test-all": "cypress run --browser chrome --spec 'cypress/e2e/*'",
+    "record-test": "cypress run --record --key 72275cbe-bbf6-40f6-ae33-0332edfa871d"
+  },
   "devDependencies": {
     "cypress": "^10.10.0"
+  },
+  "dependencies": {
+    "cypress-iframe": "^1.0.1",
+    "cypress-real-events": "^1.7.2"
   }
 }
