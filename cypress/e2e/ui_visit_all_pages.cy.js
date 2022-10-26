@@ -26,6 +26,127 @@ context('Visit all pages', () => {
       });
   });
 
+  afterEach(function () {
+    cy.get('.obra-footer').within(() => {
+      cy.document()
+        .contains('CONTACT US')
+        .should('be.visible')
+        .get('.get-apps-links')
+        .children()
+        .should('have.attr', 'href', 'https://aichat.com')
+        .children()
+        .should('have.attr', 'src', '//aichat.com/wp-content/uploads/2018/08/aichat2-green-600.png')
+        .should('be.visible')
+        .get('.icon-fa-facebook-square')
+        .should('have.attr', 'href', 'https://www.facebook.com/aichat.co/')
+        .should('be.visible')
+        .get('.icon-fa-twitter-square')
+        .should('have.attr', 'href', 'https://twitter.com/aichatco')
+        .should('be.visible')
+        .get('.icon-fa-google-plus-square')
+        .should('have.attr', 'href', 'https://plus.google.com/104781814286874039232')
+        .should('be.visible')
+        .get('.icon-fa-linkedin-square')
+        .should('have.attr', 'href', 'https://www.linkedin.com/company/aichat-pte-ltd')
+        .should('be.visible')
+        .get('.icon-fa-youtube-square')
+        .should('have.attr', 'href', 'https://www.youtube.com/channel/UC9Ijvy5d_Uv19ms84_VmmAg')
+        .should('be.visible')
+        .document()
+        .contains('+65 6591 7889')
+        .document()
+        .contains('hi@aichat.com')
+        .document()
+        .contains('75 Ayer Rajah Crescent #03-08,')
+        .document()
+        .contains('Singapore 139953')
+        .get('#footer-mobile-app-download')
+        .children()
+        .first()
+        .should(
+          'have.attr',
+          'href',
+          'https://apps.apple.com/us/app/aichat-conversations/id1599538666?itsct=apps_box_badge&itscg=30200',
+        )
+        .children()
+        .should('have.attr', 'src', '/wp-content/uploads/2022/07/Apple-Store-Badge.png')
+        .should('be.visible')
+        .get('#footer-mobile-app-download')
+        .children()
+        .last()
+        .should(
+          'have.attr',
+          'href',
+          'https://play.google.com/store/apps/details?id=com.aichat.conversations&utm_source=website&utm_campaign=aichat&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1',
+        )
+        .children()
+        .should('have.attr', 'src', '/wp-content/uploads/2022/07/Google-Play-Badge.png')
+        .should('be.visible')
+        .document()
+        .contains('LEARN MORE')
+        .document()
+        .contains('Solution')
+        .should('have.attr', 'href', 'https://aichat.com/solution/')
+        .document()
+        .contains('Service Suite')
+        .should('have.attr', 'href', 'https://aichat.com/conversational-service/')
+        .document()
+        .contains('Marketing Suite')
+        .should('have.attr', 'href', 'https://aichat.com/conversational-marketing-suite-2/')
+        .document()
+        .contains('Commerce Suite')
+        .should('have.attr', 'href', 'https://aichat.com/conversational-commerce-suite/')
+        .document()
+        .contains('AiChat Technology')
+        .should('have.attr', 'href', 'https://aichat.com/aichat-technology/')
+        .document()
+        .contains(/^Service$/)
+        .should('have.attr', 'href', 'https://aichat.com/chatbot-development-service/')
+        .document()
+        .contains('Pricing')
+        .should('have.attr', 'href', 'https://aichat.com/pricing/')
+        .document()
+        .contains('ABOUT AICHAT')
+        .document()
+        .contains('Our Story')
+        .should('have.attr', 'href', 'https://aichat.com/about-us/')
+        .document()
+        .contains('Careers')
+        .should('have.attr', 'href', 'https://aichat.com/careers/')
+        .document()
+        .contains('Customer Success')
+        .should('have.attr', 'href', 'https://aichat.com/customer-success/')
+        .document()
+        .contains('Blog')
+        .should('have.attr', 'href', 'https://aichat.com/blog')
+        .document()
+        .contains('Contact Us')
+        .should('have.attr', 'href', 'https://aichat.com/contact-us/')
+        .document()
+        .contains('Investors')
+        .should('have.attr', 'href', 'https://aichat.com/investor-relations/')
+        .document()
+        .contains('Media')
+        .should('have.attr', 'href', '/Aichat/about-us#aboutmedia')
+        .document()
+        .contains('NEWSLETTER')
+        .document()
+        .contains(
+          'Fresh insights and ideas about Messaging and A.I delivered monthly to your inbox, gratis.',
+        )
+        .get('input[type="email"]')
+        .get('input[type="submit"][value="Subscribe Now"]')
+        .document()
+        .contains('Terms of Service')
+        .should('have.attr', 'href', 'https://aichat.com/terms-of-service/')
+        .document()
+        .contains('Privacy')
+        .should('have.attr', 'href', 'https://aichat.com/Privacy-Policy/')
+        .document()
+        .contains('AiChat Pte Ltd © 2016-2022. All Rights Reserved.');
+    });
+  });
+
   it('Validate homepage is loaded properly', () => {
     cy.get('#rev_slider_7_1_wrapper').within(() => {
       cy.get('.tp-caption')
@@ -449,6 +570,199 @@ context('Visit all pages', () => {
           'Connect your chatbot with one API to all the channels your users use everyday. Reach out to your target audience regardless of their channel of choice. Seamless integration can also be done to sync up with your customer service software, marketing automation tool, CRM and eCommerce platforms that you are already familiar with.',
         )
         .should('be.visible');
+    });
+    cy.get('#ready-talkhome').within(() => {
+      cy.document()
+        .contains('Ready To Get In Touch? Let’s Talk!')
+        .should('be.visible')
+        .document()
+        .contains('Build relationships in real-time and respond to your customers at scale.')
+        .should('be.visible');
+      cy.get('input[name="first_name"]')
+        .should('be.visible')
+        .get('input[name="last_name"]')
+        .should('be.visible')
+        .get('input[name="business_email"]')
+        .should('be.visible')
+        .get('input[name="phoneno"]')
+        .should('be.visible')
+        .get('input[name="company_name"]')
+        .should('be.visible')
+        .get('select[name="company_size"]')
+        .should('be.enabled')
+        .get('select[name="product_interest"]')
+        .should('be.enabled')
+        .get('select[name="industry"]')
+        .should('be.enabled')
+        .get('.col-md-12')
+        .contains('*We will handle your contact details in line with our ')
+        .contains('Privacy Policy')
+        .should('have.attr', 'href', '//aichat.com/aichat_website/Privacy-Policy/')
+        .document()
+        .contains(
+          '. If you prefer not to receive marketing emails from AiChat, you can opt-out of all marketing communications or customize your preferences ',
+        )
+        .contains('here')
+        .should(
+          'have.attr',
+          'href',
+          'https://aichat.us19.list-manage.com/unsubscribe?u=7b7fc06e3964ca6688b1e2727&id=e97cd08497',
+        )
+        .get('input[type="submit"][value="Request a Demo"]')
+        .should('be.visible');
+    });
+    cy.get('.obra-dhav-dotted.Seen-logo').within(() => {
+      cy.document()
+        .contains('As Seen On')
+        .should('be.visible')
+        .get('.wpb_wrapper.vc_figure')
+        .eq(0)
+        .children()
+        .should(
+          'have.attr',
+          'href',
+          'https://www.warc.com/newsandopinion/news/chatbots_offer_personalization_options/40833',
+        )
+        .children()
+        .should('have.attr', 'src', 'https://aichat.com/wp-content/uploads/2018/09/warcv1.png')
+        .get('.wpb_wrapper.vc_figure')
+        .eq(1)
+        .children()
+        .should(
+          'have.attr',
+          'href',
+          'https://www.zaobao.com.sg/sme/sme-interview/story20180719-876354',
+        )
+        .children()
+        .should('have.attr', 'src', 'https://aichat.com/wp-content/uploads/2018/09/zaov1.png')
+        .get('.wpb_wrapper.vc_figure')
+        .eq(2)
+        .children()
+        .should(
+          'have.attr',
+          'href',
+          'https://www.econsultancy.com/reports/a-marketer-s-guide-to-ai-and-machine-learning',
+        )
+        .children()
+        .should(
+          'have.attr',
+          'src',
+          'https://aichat.com/wp-content/uploads/2018/09/econsultancyv1.png',
+        )
+        .get('.wpb_wrapper.vc_figure')
+        .eq(3)
+        .children()
+        .should(
+          'have.attr',
+          'href',
+          'https://www.huffingtonpost.com/entry/see-how-shimano-chatbot-is-revolutionizing-marketing_us_59dd119ee4b07a185aa75ed8',
+        )
+        .children()
+        .should('have.attr', 'src', 'https://aichat.com/wp-content/uploads/2018/09/huffv1.png')
+        .get('.wpb_wrapper.vc_figure')
+        .eq(4)
+        .children()
+        .should(
+          'have.attr',
+          'href',
+          'https://www.channelnewsasia.com/news/business/shopping-for-engagement-rings-or-light-bulbs-there-s-a-chatbot-9085372',
+        )
+        .children()
+        .should('have.attr', 'src', 'https://aichat.com/wp-content/uploads/2018/09/chanlv1.png')
+        .get('.wpb_wrapper.vc_figure')
+        .eq(5)
+        .children()
+        .should(
+          'have.attr',
+          'href',
+          'http://www.marketing-interactive.com/why-brands-cant-do-without-chatbots/',
+        )
+        .children()
+        .should('have.attr', 'src', 'https://aichat.com/wp-content/uploads/2018/09/marketingv1.png')
+        .get('.wpb_wrapper.vc_figure')
+        .eq(6)
+        .children()
+        .should(
+          'have.attr',
+          'href',
+          'https://sg.news.yahoo.com/5-singaporean-chatbots-actually-070943210.html',
+        )
+        .children()
+        .should('have.attr', 'src', 'https://aichat.com/wp-content/uploads/2018/09/yashhv1.png')
+        .get('.wpb_wrapper.vc_figure')
+        .eq(7)
+        .children()
+        .should(
+          'have.attr',
+          'href',
+          'https://venturebeat.com/2016/10/04/100-people-to-watch-in-the-chatbot-space/',
+        )
+        .children()
+        .should('have.attr', 'src', 'https://aichat.com/wp-content/uploads/2018/09/ventv1.png')
+        .get('.wpb_wrapper.vc_figure')
+        .eq(8)
+        .children()
+        .should('have.attr', 'href', 'https://www.tnp.sg/news/singapore/chatbots-rise-singapore')
+        .children()
+        .should('have.attr', 'src', 'https://aichat.com/wp-content/uploads/2018/09/the-paperv1.png')
+        .get('.wpb_wrapper.vc_figure')
+        .eq(9)
+        .children()
+        .should(
+          'have.attr',
+          'href',
+          'https://www.straitstimes.com/business/economy/procter-gamble-taps-27-asia-start-ups-for-tech-solutions-to-industry-challenges',
+        )
+        .children()
+        .should(
+          'have.attr',
+          'src',
+          'https://aichat.com/wp-content/uploads/2021/08/the-straits-times-logo.jpg',
+        )
+        .get('.wpb_wrapper.vc_figure')
+        .eq(10)
+        .children()
+        .should(
+          'have.attr',
+          'href',
+          'https://dailysocial.id/post/aichat-berencana-membawa-platformchatbot- as-a-services-ke-indonesia',
+        )
+        .children()
+        .should(
+          'have.attr',
+          'src',
+          'https://aichat.com/wp-content/uploads/2018/09/daily-soalv1.png',
+        )
+        .get('.wpb_wrapper.vc_figure')
+        .eq(11)
+        .children()
+        .should(
+          'have.attr',
+          'href',
+          'https://e27.co/5-singaporean-chatbots-will-actually-use-20160830/',
+        )
+        .children()
+        .should('have.attr', 'src', 'https://aichat.com/wp-content/uploads/2018/09/e27v1.png')
+        .get('.wpb_wrapper.vc_figure')
+        .eq(12)
+        .children()
+        .should('have.attr', 'href', 'https://www.techinasia.com/tia-sg-2017-arena')
+        .children()
+        .should('have.attr', 'src', 'https://aichat.com/wp-content/uploads/2018/09/techv1.png')
+        .get('.wpb_wrapper.vc_figure')
+        .eq(13)
+        .children()
+        .should(
+          'have.attr',
+          'href',
+          'https://www.businesstimes.com.sg/brunch/a-chatbot-will-help-you-now',
+        )
+        .children()
+        .should(
+          'have.attr',
+          'src',
+          'https://aichat.com/wp-content/uploads/2022/06/bt-icon-EDIT.png',
+        );
     });
   });
 });
