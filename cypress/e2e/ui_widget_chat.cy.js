@@ -4,7 +4,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   return false;
 });
 
-context('Visit all pages', () => {
+context('Widget chat functions', () => {
   beforeEach(function () {
     cy.openHomepage();
   });
@@ -37,7 +37,7 @@ context('Visit all pages', () => {
       .click();
     // Cypress is unable to handle multiple tabs
   });
-  it('validate if the widget chat is loaded in Homepage', () => {
+  it('validate if the widget chat is loading in Homepage', () => {
     cy.get('.aichat-menu-open-button')
       .should('be.visible')
       .click()
@@ -50,7 +50,7 @@ context('Visit all pages', () => {
       .get('.aichat-menu-close-icon')
       .should('be.visible');
   });
-  it('validate if the widget chat is loaded in Service Suite page', () => {
+  it('validate if the widget chat is loading in Service Suite page', () => {
     cy.contains('Products')
       .realHover('mouse')
       .get('.nav-label')
@@ -68,7 +68,7 @@ context('Visit all pages', () => {
       .get('.aichat-menu-close-icon')
       .should('be.visible');
   });
-  it('validate if the widget chat is loaded in For Enterprise page', () => {
+  it('validate if the widget chat is loading in For Enterprise page', () => {
     cy.contains('Solution')
       .realHover('mouse')
       .get('.nav-label')
@@ -86,7 +86,7 @@ context('Visit all pages', () => {
       .get('.aichat-menu-close-icon')
       .should('be.visible');
   });
-  it('validate if the widget chat is loaded in Mitsubishi Motors page', () => {
+  it('validate if the widget chat is loading in Mitsubishi Motors page', () => {
     cy.contains('Customer Success')
       .realHover('mouse')
       .get('.nav-label')

@@ -1,9 +1,11 @@
-context('Visit all pages', () => {
+/// <reference types='cypress' />
+
+context('Lets talk form', () => {
   beforeEach(function () {
     cy.openHomepage();
   });
 
-  it('validate if lets talk form is working properly', () => {
+  it('Validate if lets talk form is working properly', () => {
     cy.get('#ready-talkhome').within(() => {
       cy.document()
         .contains('Ready To Get In Touch? Let’s Talk!')
@@ -12,9 +14,9 @@ context('Visit all pages', () => {
         .contains('Build relationships in real-time and respond to your customers at scale.')
         .should('be.visible');
       cy.get('input[name="first_name"]')
-        .type('Rifqi')
+        .type('Andrei')
         .get('input[name="last_name"]')
-        .type('Jauhari')
+        .type('Molnar')
         .get('input[name="business_email"]')
         .type('ranger@gmail.com')
         .get('input[name="phoneno"]')

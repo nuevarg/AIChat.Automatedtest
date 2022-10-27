@@ -1,29 +1,8 @@
+/// <reference types='cypress' />
+
 context('Visit all pages', () => {
   beforeEach(function () {
-    cy.openHomepage()
-      .get('.obra-header')
-      .within(() => {
-        cy.get('.obra-brand')
-          .should('be.visible')
-          .get('#menu-item-1790')
-          .contains('Products')
-          .should('be.visible')
-          .get('#menu-item-8832')
-          .contains('Solution')
-          .should('be.visible')
-          .get('#menu-item-2673')
-          .contains('Service')
-          .should('be.visible')
-          .get('#menu-item-2676')
-          .contains('Customer Success')
-          .should('be.visible')
-          .get('#menu-item-515')
-          .contains('Blog')
-          .should('be.visible')
-          .get('#menu-item-3314')
-          .contains('Company')
-          .should('be.visible');
-      });
+    cy.openHomepage();
   });
 
   afterEach(function () {
@@ -147,31 +126,33 @@ context('Visit all pages', () => {
     });
   });
 
-  it('Validate Homepage is loaded properly', () => {
-    cy.get('#rev_slider_7_1_wrapper').within(() => {
-      cy.get('.tp-caption')
-        .contains('AI-Powered Conversational')
-        .should('be.visible')
-        .get('.tp-caption')
-        .contains('Experience Platform')
-        .should('be.visible')
-        .get('.tp-caption')
-        .contains('Automate 91% of your service support &')
-        .should('be.visible')
-        .get('.tp-caption')
-        .contains('drive 3x more lead conversion via chat.')
-        .should('be.visible')
-        .get('.rev-btn')
-        .should('be.visible')
-        .get('.tp-bgimg')
-        .should(
-          'have.attr',
-          'src',
-          'https://aichat.com/wp-content/uploads/2019/03/banners_1_bgv6.png',
-          'be.visible',
-        );
-      cy.g;
-    });
+  it('Validate Homepage is loading properly', () => {
+    cy.validateHeaderPage()
+      .get('#rev_slider_7_1_wrapper')
+      .within(() => {
+        cy.get('.tp-caption')
+          .contains('AI-Powered Conversational')
+          .should('be.visible')
+          .get('.tp-caption')
+          .contains('Experience Platform')
+          .should('be.visible')
+          .get('.tp-caption')
+          .contains('Automate 91% of your service support &')
+          .should('be.visible')
+          .get('.tp-caption')
+          .contains('drive 3x more lead conversion via chat.')
+          .should('be.visible')
+          .get('.rev-btn')
+          .should('be.visible')
+          .get('.tp-bgimg')
+          .should(
+            'have.attr',
+            'src',
+            'https://aichat.com/wp-content/uploads/2019/03/banners_1_bgv6.png',
+            'be.visible',
+          );
+        cy.g;
+      });
     cy.get('#ccc').within(() => {
       cy.get('.vc_single_image-img')
         .eq(0)
@@ -766,8 +747,138 @@ context('Visit all pages', () => {
     });
   });
 
-  it.only('Validate Service Suite page is loaded properly', function () {
-    cy.get('.nav-label').contains('Products').trigger('mousehover')
-    .get('.nav-label').contains('Service Suite').click({force:true})
-  })
+  it('Validate Service Suite page is loading properly', function () {
+    cy.get('.nav-label')
+      .contains('Products')
+      .realHover('mouse')
+      .get('.nav-label')
+      .contains('Service Suite')
+      .click()
+      .validateHeaderPage()
+      .get('.obra-page-title')
+      .within(() => {
+        cy.get('.page-title-wrap')
+          .should(
+            'have.attr',
+            'style',
+            'background-image: url(//aichat.com/wp-content/uploads/2019/04/conversational-service-suite-banner-03.jpg);',
+          )
+          .contains('Conversational Service Suite')
+          .should('be.visible');
+      })
+      .get('.obra-content-area')
+      .within(() => {
+        cy.contains(
+          'Achieve 72% more customer happiness with AI + Human customer support software.',
+        )
+          .should('be.visible')
+          .document()
+          .contains(
+            'Create a support environment that allows for automated conversations, human and A.I collaboration, as well as a 360 view of the customer that enables you to build better relationships with your customers.',
+          )
+          .should('be.visible');
+      })
+      .get('.vc_custom_1551182318828')
+      .within(() => {
+        cy.contains('Automated Reply')
+          .should('be.visible')
+          .document()
+          .contains(
+            'Provide better customer experience with an instant response every time – even when it is after office hours. Resolve at least 30% of your frequently asked questions real-time with a virtual assistant, reducing resolution time and allowing your team to focus on building meaningful customer relationships.',
+          )
+          .should('be.visible')
+          .get('.obra-image')
+          .children()
+          .should(
+            'have.attr',
+            'src',
+            'https://aichat.com/wp-content/uploads/2019/03/automated-reply-min.png',
+          );
+      })
+      .get('.vc_custom_1551182326138')
+      .within(() => {
+        cy.contains('Drag-and-Drop Bot Builder')
+          .should('be.visible')
+          .document()
+          .contains(
+            "Our intuitive drag-and-drop builder makes it easy and fun to setup your chatbot. No programming required - just connect your customers' favourite messaging channels to AiChat and your bot will be up in no time.",
+          )
+          .should('be.visible')
+          .get('.obra-image')
+          .children()
+          .should(
+            'have.attr',
+            'src',
+            'https://aichat.com/wp-content/uploads/2019/03/knowledge-base-builder-1.gif',
+          );
+      })
+      .get('.vc_custom_1551182332666')
+      .within(() => {
+        cy.contains('Unified Chat Channels')
+          .should('be.visible')
+          .document()
+          .contains(
+            'Empower your customer service team to manage all messaging channels in one screen, unifying the customer interactions into a seamless omni-channel conversation.',
+          )
+          .should('be.visible')
+          .get('.obra-image')
+          .children()
+          .should(
+            'have.attr',
+            'src',
+            'https://aichat.com/wp-content/uploads/2019/03/unified-chat-channels-min.png',
+          );
+      })
+      .get('.vc_custom_1551182339410')
+      .within(() => {
+        cy.contains('A.I Assisted Live Chat')
+          .should('be.visible')
+          .document()
+          .contains(
+            'When a new message is received in live chat mode, our AI will suggest the best matching answers based on confidence level to the agent. The agent can then insert the relevant answer template promptly without having to search through the huge knowledge base or consulting others. These interactions also allow the bot learns from organic interactions between agents and users.',
+          )
+          .should('be.visible')
+          .get('.obra-image')
+          .children()
+          .should(
+            'have.attr',
+            'src',
+            'https://aichat.com/wp-content/uploads/2019/03/ai-assisted-live-chat-min.png',
+          );
+      })
+      .get('.vc_custom_1551182347035')
+      .within(() => {
+        cy.contains('Capture and qualify more leads from chat')
+          .should('be.visible')
+          .document()
+          .contains(
+            'Instead of relying on lengthy forms and gated content to try and capture your leads, proactively engage them when they’re live on your website or messaging channels. AiChat connects your business with the best leads in real-time.',
+          )
+          .should('be.visible')
+          .get('.obra-image')
+          .children()
+          .should(
+            'have.attr',
+            'src',
+            'https://aichat.com/wp-content/uploads/2019/03/capture-qualify-leads-min.png',
+          );
+      })
+      .get('.vc_custom_1552626211392')
+      .within(() => {
+        cy.contains('Smart Routing to Agents')
+          .should('be.visible')
+          .document()
+          .contains(
+            'After qualifying the leads, bot routes them to the most suitable agent or department and keeps your CRM in sync.',
+          )
+          .should('be.visible')
+          .get('.obra-image')
+          .children()
+          .should(
+            'have.attr',
+            'src',
+            'https://aichat.com/wp-content/uploads/2019/03/smart-agent-routing-min.png',
+          );
+      });
+  });
 });
